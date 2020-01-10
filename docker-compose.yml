@@ -1,15 +1,15 @@
 version: '3.7'
 
 services:
-  gatsby:
-    build: 
-      context: .
-      dockerfile: Dockerfile  
-    container_name: gatsby
-    depends_on:
-      - wp
-    ports:
-      - "8080:8080"
+   gatsby:
+     build: 
+       context: .
+       dockerfile: Dockerfile  
+     container_name: gatsby
+     depends_on:
+       - wp
+     ports:
+       - "8080:8080"
   wp:
     image: wordpress:latest 
     container_name: wordpress
@@ -27,7 +27,7 @@ services:
     restart: unless-stopped
     ports:
       - "8000:80"
-    volumes:
+     volumes:
       - ./wordpress:/var/www/html
     #   - wordpress_uploads:/var/www/html/wp-content/uploads
     #   - ./plugins/advanced-custom-fields-pro:/var/www/html/wp-content/plugins/advanced-custom-fields-pro 
@@ -66,7 +66,7 @@ services:
 volumes:
     db_data: {}
     gatsby_build: {}
-    wordpress_uploads: {}
+    # wordpress_uploads: {}
     storybook_build: {}
     # jenkins_data: {}
 
