@@ -1,0 +1,73 @@
+version: '3.7'
+
+services:
+  gatsby:
+    build: 
+      context: .
+      dockerfile: Dockerfile  
+    container_name: gatsby
+    depends_on:
+      - wp
+    ports:
+      - "8080:8080"
+  wp:
+    image: wordpress:latest 
+    container_name: wordpress
+    depends_on:
+      - db
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: test
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: test
+      JENKINS_URL: "${JENKINS_URL}"
+      WORDPRESS_URL: "${WP_URL}"
+      JENKINS_BUILD_NAME: "${BUILD_NAME}"
+      JENKINS_API_TOKEN: "${API_TOKEN}"
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - ./wordpress:/var/www/html
+    #   - wordpress_uploads:/var/www/html/wp-content/uploads
+    #   - ./plugins/advanced-custom-fields-pro:/var/www/html/wp-content/plugins/advanced-custom-fields-pro 
+    #   - ./plugins/wordpress-seo-premium:/var/www/html/wp-content/plugins/wordpress-seo-premium 
+    #   - ./plugins/gravityforms:/var/www/html/wp-content/plugins/gravityforms 
+    #   - ./plugins/classic-editor:/var/www/html/wp-content/plugins/classic-editor 
+    #   - ./plugins/acf-to-rest-api:/var/www/html/wp-content/plugins/acf-to-rest-api 
+    #   - ./plugins/wp-api-menus:/var/www/html/wp-content/plugins/wp-api-menus 
+
+  db:
+    image: mysql:5.7
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    command: [
+        '--default_authentication_plugin=mysql_native_password',
+        '--character-set-server=utf8mb4',
+        '--collation-server=utf8mb4_unicode_ci'
+    ]
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_ROOT_PASSWORD: test
+
+  # jenkins:
+  #   image: jenkins/jenkins:lts
+  #   ports:
+  #    - "8095:8080"
+  #   container_name: jenkins
+  #   depends_on:
+  #     - wp      
+  #   volumes:
+  #     - jenkins_data:/var/lib/jenkins      
+volumes:
+    db_data: {}
+    gatsby_build: {}
+    wordpress_uploads: {}
+    storybook_build: {}
+    # jenkins_data: {}
+
+ 
