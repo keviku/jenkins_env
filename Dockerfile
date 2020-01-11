@@ -16,7 +16,7 @@ RUN ["gatsby", "telemetry", "--disable"]
 WORKDIR /app
 # RUN ["gatsby", "new", "test"]
 
-COPY package.json .
+COPY /gatsby/test/package.json .
 
 RUN ["npm","install"]
 
