@@ -1,7 +1,7 @@
 node {
   checkout scm
       stage('Deploy') {  
-            sh "cd ~/Desktop/test_button"
+            sh "cd ~/"
           
         }
 }
