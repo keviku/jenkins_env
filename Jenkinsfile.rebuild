@@ -1,7 +1,7 @@
 node {
   checkout scm
       stage('Deploy') {  
-            sh "sudo docker exec -it gatsby /bin/bash sh -c 'gatsby build'"
+            sh "docker exec -it gatsby /bin/bash sh -c 'gatsby build'"
           
         }
 }
