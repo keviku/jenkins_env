@@ -14,11 +14,13 @@ RUN git config --global http.sslVerify false
 RUN npm install -g gatsby-cli
 RUN ["gatsby", "telemetry", "--disable"]
 WORKDIR /app
-RUN ["gatsby", "new", "test"]
-WORKDIR /app/test
+# RUN ["gatsby", "new", "test"]
+
+COPY package.json .
+
 RUN ["npm","install"]
-# COPY package.json .
-# COPY . .
+
+COPY . .
 
 HEALTHCHECK --interval=5m --timeout=10s \
   CMD curl -f http://localhost:8080/ || exit 1
