@@ -1,7 +1,7 @@
 node {
   checkout scm
       stage('Deploy') {  
-              sh "docker-compose -p test up -d'"
+              sh "docker-compose -p test up -d"
           
         }
 }
