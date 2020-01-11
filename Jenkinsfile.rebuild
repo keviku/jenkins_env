@@ -13,9 +13,9 @@ node {
   ]) {
     withCredentials([string(credentialsID: 'key', variable: key)]) {
       stage('Deploy') {
-          {
+          
             sh "docker exec -it gatsby /bin/bash sh -c 'gatsby build'"
-          }
+          
         }
       }
     }
