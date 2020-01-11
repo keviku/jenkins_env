@@ -624,6 +624,32 @@ function twentytwenty_customize_preview_init() {
 
 add_action( 'customize_preview_init', 'twentytwenty_customize_preview_init' );
 
+
+# Trigger Jenkins Rebuild to produce gatsby static files
+function triggerJenkinsBuild($post_id)
+{
+  if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
+    return;
+  }
+  try {
+
+ #   $gatsby_jenkins = 'https://mark:11c0eb525f30ce0f82b25573c6be5abdfd@jenkins.g200.digitalstudio.io/job/G200_Gatsby_Rebuild/build?llihjvo2384ufo8dhf98w0ufe';
+    $gatsby_jenkins = 'https://test:${key}@${JENKINS_URL}/job/"${BUILD_NAME}"/build?${API_TOKEN}';
+    $response = Requests::post($gatsby_jenkins);
+
+   
+
+
+  } catch (Exception $e) {
+
+    echo 'Gatsby build ', $e, "\n";
+  }
+}
+
+add_action('save_post', 'triggerJenkinsBuild');
+
+
+
 /**
  * Get accessible color for an area.
  *

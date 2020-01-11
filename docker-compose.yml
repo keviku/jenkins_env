@@ -10,7 +10,7 @@ services:
        - wp
      ports:
        - "8080:8080"
-  wp:
+   wp:
     image: wordpress:latest 
     container_name: wordpress
     depends_on:
@@ -27,7 +27,7 @@ services:
     restart: unless-stopped
     ports:
       - "8000:80"
-     volumes:
+    volumes:
       - ./wordpress:/var/www/html
     #   - wordpress_uploads:/var/www/html/wp-content/uploads
     #   - ./plugins/advanced-custom-fields-pro:/var/www/html/wp-content/plugins/advanced-custom-fields-pro 
@@ -37,7 +37,7 @@ services:
     #   - ./plugins/acf-to-rest-api:/var/www/html/wp-content/plugins/acf-to-rest-api 
     #   - ./plugins/wp-api-menus:/var/www/html/wp-content/plugins/wp-api-menus 
 
-  db:
+   db:
     image: mysql:5.7
     container_name: mysql
     ports:
