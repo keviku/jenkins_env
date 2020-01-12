@@ -30,14 +30,6 @@ services:
       - "8000:80"
     volumes:
       - ./wordpress:/var/www/html
-    #   - wordpress_uploads:/var/www/html/wp-content/uploads
-    #   - ./plugins/advanced-custom-fields-pro:/var/www/html/wp-content/plugins/advanced-custom-fields-pro 
-    #   - ./plugins/wordpress-seo-premium:/var/www/html/wp-content/plugins/wordpress-seo-premium 
-    #   - ./plugins/gravityforms:/var/www/html/wp-content/plugins/gravityforms 
-    #   - ./plugins/classic-editor:/var/www/html/wp-content/plugins/classic-editor 
-    #   - ./plugins/acf-to-rest-api:/var/www/html/wp-content/plugins/acf-to-rest-api 
-    #   - ./plugins/wp-api-menus:/var/www/html/wp-content/plugins/wp-api-menus 
-
    db:
     image: mysql:5.7
     container_name: mysql
