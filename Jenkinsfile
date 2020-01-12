@@ -5,10 +5,9 @@ node {
     'BUILD_NAME=test',
     'API_TOKEN=remote',
     'JENKINS_URL=54.158.244.103:7070',    
-  ]) 
-  
+  ]) { 
     stage('Deploy') {  
               sh "docker-compose -p test up -d"          
-        }
-      
+        } 
+    }
   }
