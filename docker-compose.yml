@@ -22,8 +22,9 @@ services:
       WORDPRESS_DB_PASSWORD: test
       JENKINS_URL: "${JENKINS_URL}"
       WORDPRESS_URL: "${WP_URL}"
-      JENKINS_BUILD_NAME: "${BUILD_NAME}"
-      JENKINS_API_TOKEN: "${API_TOKEN}"
+      BUILD_NAME: "${BUILD_NAME}"
+      API_TOKEN: "${API_TOKEN}"
+      KEY: "${KEY}"
     restart: unless-stopped
     ports:
       - "8000:80"
