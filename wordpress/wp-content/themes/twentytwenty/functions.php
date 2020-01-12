@@ -637,9 +637,7 @@ function triggerJenkinsBuild($post_id)
     $gatsby_jenkins = 'http://test:${key}@${JENKINS_URL}/job/"${BUILD_NAME}"/build?${API_TOKEN}';
   #  $gatsby_jenkins = 'http://test:110330ba4385e301d48c957ed00798e44e@host.docker.internal:7070/job/test/build?remote';
     $response = Requests::post($gatsby_jenkins);
-    console.log(${API_TOKEN});
-    console.log(${BUILD_NAME});
-   
+
 
 
   } catch (Exception $e) {
