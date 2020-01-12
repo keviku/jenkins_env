@@ -634,7 +634,7 @@ function triggerJenkinsBuild($post_id)
   try {
 
  #   $gatsby_jenkins = 'http://mark:11c0eb525f30ce0f82b25573c6be5abdfd@jenkins.g200.digitalstudio.io/job/G200_Gatsby_Rebuild/build?llihjvo2384ufo8dhf98w0ufe';
-    $gatsby_jenkins = 'http://test:${key}@${JENKINS_URL}/job/"${BUILD_NAME}"/build?${API_TOKEN}';
+    $gatsby_jenkins = 'http://test:${KEY}@${JENKINS_URL}/job/"${BUILD_NAME}"/build?${API_TOKEN}';
   #  $gatsby_jenkins = 'http://test:110330ba4385e301d48c957ed00798e44e@host.docker.internal:7070/job/test/build?remote';
     $response = Requests::post($gatsby_jenkins);
 
