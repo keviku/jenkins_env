@@ -1,9 +1,22 @@
 node {
   checkout scm
-      stage('Deploy') {  
-              sh "docker exec -it gatsby /bin/bash sh -c 'gatsby build'"
-          
-        }
+  withEnv([
+    'USERNAME=test',
+    'URL=host.docker.internal:7070',
+    'JOB=test_deploy',
+    'ID=remote',
+  ]) 
+  {  
+   withCredentials(
+      [
+        string(credentialsId: 'TOKEN', variable: 'TOKEN')        
+      ]
+    ) {  
+        stage('Deploy') {  
+              sh "docker exec -it gatsby /bin/bash sh -c 'gatsby build'"    
+       }
+     }
+    }
 }
 
 
