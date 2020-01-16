@@ -638,7 +638,7 @@ function fireFunctionOnSave($post_id)
         $ID = getenv('ID');
     
         
-        $gatsby_url2 = 'https://'.$USERNAME.':'.$TOKEN.'@'.$URL.'/job/'.$JOB.'/build?'.$ID.'';
+        $gatsby_url2 = 'http://'.$USERNAME.':'.$TOKEN.'@'.$URL.'/job/'.$JOB.'/build?'.$ID.'';
       
         $response = Requests::post($gatsby_url2);
     } catch (Exception $e) {
