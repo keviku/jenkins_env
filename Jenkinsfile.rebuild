@@ -2,7 +2,7 @@ node {
   checkout scm
   withEnv([
     'USERNAME=test',
-    'URL=http://3.82.2.207:7070',
+    'URL=3.82.2.207:7070',
     'JOB=test_deploy',
     'ID=remote',
   ]) 
