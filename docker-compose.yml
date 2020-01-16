@@ -20,11 +20,12 @@ services:
       WORDPRESS_DB_NAME: test
       WORDPRESS_DB_USER: root
       WORDPRESS_DB_PASSWORD: test
-      JENKINS_URL: "${JENKINS_URL}"
-      WORDPRESS_URL: "${WP_URL}"
-      BUILD_NAME: "${BUILD_NAME}"
-      API_TOKEN: "${API_TOKEN}"
-      KEY: "${KEY}"
+      USERNAME: "${USERNAME}"
+      TOKEN: "${TOKEN}"
+      URL: "${URL}"
+      JOB: "${JOB}"
+      ID: "${ID}"
+      
     restart: unless-stopped
     ports:
       - "8000:80"
@@ -60,7 +61,6 @@ volumes:
     db_data: {}
     gatsby_build: {}
     # wordpress_uploads: {}
-    storybook_build: {}
-    # jenkins_data: {}
+    jenkins_data: {}
 
  
