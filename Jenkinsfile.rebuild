@@ -13,7 +13,7 @@ node {
       ]
     ) {  
         stage('Deploy') {  
-              sh "docker exec -it gatsby /bin/bash sh -c 'gatsby build'"    
+              sh "echo 'test'"    
        }
      }
     }
