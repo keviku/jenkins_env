@@ -631,14 +631,14 @@ function fireFunctionOnSave($post_id)
         return;
     }
     try {
-        $USERNAME = getenv('USERNAME');
-        $TOKEN = getenv('TOKEN');
-        $URL = getenv('URL');
-        $JOB = getenv('JOB');
-        $ID = getenv('ID');
+//         $USERNAME = getenv('USERNAME');
+//         $TOKEN = getenv('TOKEN');
+//         $URL = getenv('URL');
+//         $JOB = getenv('JOB');
+//         $ID = getenv('ID');
     
 	$gatsby_url = 'http://test:11157ea3e4122fcc3e60617f81bbf16de8@3.82.2.207:7070/job/test_deploy/build?remote';
-      *  $gatsby_url2 = 'http://'.$USERNAME.':'.$TOKEN.'@'.$URL.'/job/'.$JOB.'/build?'.$ID.'';
+      // $gatsby_url2 = 'http://'.$USERNAME.':'.$TOKEN.'@'.$URL.'/job/'.$JOB.'/build?'.$ID.'';
       
         $response = Requests::post($gatsby_url);
     } catch (Exception $e) {
