@@ -625,29 +625,28 @@ function twentytwenty_customize_preview_init() {
 add_action( 'customize_preview_init', 'twentytwenty_customize_preview_init' );
 
 
-# Trigger Jenkins Rebuild to produce gatsby static files
-function triggerJenkinsBuild($post_id)
+function fireFunctionOnSave($post_id)
 {
-  if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
-    return;
-  }
-  try {
-
- #   $gatsby_jenkins = 'http://mark:11c0eb525f30ce0f82b25573c6be5abdfd@jenkins.g200.digitalstudio.io/job/G200_Gatsby_Rebuild/build?llihjvo2384ufo8dhf98w0ufe';
-    $gatsby_jenkins = 'http://test:${KEY}@${JENKINS_URL}/job/${BUILD_NAME}/build?${API_TOKEN}';
-  #  $gatsby_jenkins = 'http://test:110330ba4385e301d48c957ed00798e44e@host.docker.internal:7070/job/test/build?remote';
-    $response = Requests::post($gatsby_jenkins);
-
-
-
-  } catch (Exception $e) {
-
-    echo 'Gatsby build ', $e, "\n";
-  }
+    if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
+        return;
+    }
+    try {
+        $USERNAME = getenv('USERNAME');
+        $TOKEN = getenv('TOKEN');
+        $URL = getenv('URL');
+        $JOB = getenv('JOB');
+        $ID = getenv('ID');
+    
+        
+        $gatsby_url2 = 'https://'.$USERNAME.':'.$TOKEN.'/job/'.$JOB.'/build?'.$ID.'';
+      
+        $response = Requests::post($gatsby_url2);
+    } catch (Exception $e) {
+        echo 'Gatsby fefresh railed with exception ', $e, "\n";
+    }
 }
 
-add_action('save_post', 'triggerJenkinsBuild');
-
+add_action('save_post', 'fireFunctionOnSave');
 
 
 /**
