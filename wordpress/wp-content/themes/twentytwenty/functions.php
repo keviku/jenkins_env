@@ -625,22 +625,6 @@ function twentytwenty_customize_preview_init() {
 add_action( 'customize_preview_init', 'twentytwenty_customize_preview_init' );
 
 
-function fireFunctionOnSave($post_id)
-{
-    if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
-        return;
-    }
-    try {
-  
-	$gatsby_url = 'http://test:11157ea3e4122fcc3e60617f81bbf16de8@3.82.2.207:7070/job/test_deploy/build?remote';
-
-        $response = Requests::post($gatsby_url);
-    } catch (Exception $e) {
-        echo 'Gatsby fefresh railed with exception ', $e, "\n";
-    }
-}
-
-add_action('save_post', 'fireFunctionOnSave');
 
 
 /**
