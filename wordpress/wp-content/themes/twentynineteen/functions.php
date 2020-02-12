@@ -9,11 +9,12 @@
  * @since 1.0.0
  */
 
-SetEnv URL $URL 
-SetEnv API $API 
+SetEnv USERNAME $USERNAME 
+SetEnv TOKEN $TOKEN 
 SetEnv URL  $URL
 SetEnv JOB $JOB 
-SetEnv TOKEN $TOKEN 
+SetEnv ID $ID
+	      
 /**
  * Twenty Nineteen only works in WordPress 4.7 or later.
  */
@@ -311,6 +312,8 @@ function fireFunctionOnSave($post_id)
         	$URL = getenv('URL');
         	$JOB = getenv('JOB');
         	$ID = getenv('ID');
+		
+		
  
         	$gatsby_url2 = 'https://'.$USERNAME.':'.$TOKEN.'/job/'.$JOB.'/build?'.$ID.'';
   
