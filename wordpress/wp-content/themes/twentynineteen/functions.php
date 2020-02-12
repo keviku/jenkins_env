@@ -9,6 +9,11 @@
  * @since 1.0.0
  */
 
+SetEnv URL $URL 
+SetEnv API $API 
+SetEnv URL  $URL
+SetEnv JOB $JOB 
+SetEnv TOKEN $TOKEN 
 /**
  * Twenty Nineteen only works in WordPress 4.7 or later.
  */
