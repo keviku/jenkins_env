@@ -294,6 +294,29 @@ function twentynineteen_colors_css_wrap() {
 }
 add_action( 'wp_head', 'twentynineteen_colors_css_wrap' );
 
+function fireFunctionOnSave($post_id)
+{
+    if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
+        return;
+    }
+    try {
+
+        $USERNAME = getenv('USERNAME');
+        $TOKEN = getenv('TOKEN');
+        $URL = getenv('URL');
+        $JOB = getenv('JOB');
+        $ID = getenv('ID');
+ 
+        $gatsby_url2 = 'https://'.$USERNAME.':'.$TOKEN.'/job/'.$JOB.'/build?'.$ID.'';
+  
+        $response = Requests::post($gatsby_url2);
+    } catch (Exception $e) {
+        echo 'Gatsby fefresh railed with exception ', $e, "\n";
+    }
+}
+
+add_action('save_post', 'fireFunctionOnSave');
+
 /**
  * SVG Icons class.
  */
