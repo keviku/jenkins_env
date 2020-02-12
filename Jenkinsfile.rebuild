@@ -13,7 +13,8 @@ node {
       ]
     ) {  
         stage('Deploy') {  
-              sh "/Applications/Docker.app/Contents/Resources/bin/docker run -v tinkertailor_gatsby_build:/app/public tinkertailor_gatsby:latest sh -c 'gatsby build'"    
+              sh "/Applications/Docker.app/Contents/Resources/bin/docker run -v tinkertailor_gatsby_build:/app/public tinkertailor_gatsby:latest sh -c 'gatsby build'"   
+              sh "docker run -v /var/run/docker.sock:/var/run/docker.sock docker.io/jenkins/jenkins:lts sh -c 'docker exec -it gatsby /bin/bash'"
        }
      }
     }
