@@ -13,7 +13,7 @@ node {
       ]
     ) {  
         stage('Deploy') {  
-              sh "docker-compose -p test up -d"   
+   
               sh "docker run -v test_gatsby_build:/app/public test_gatsby:latest sh -c 'gatsby build'"         
 
               
