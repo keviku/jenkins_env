@@ -2,18 +2,18 @@ node {
   checkout scm
   withEnv([
     'USERNAME=test',
-    'URL=3.82.2.207:7070',
-    'JOB=test_deploy',
+    'URL=localhost:7070',
+    'JOB=test',
     'ID=remote',
   ]) 
   {  
    withCredentials(
       [
-        string(credentialsId: 'TOKEN', variable: 'TOKEN')        
+        string(credentialsId: 'key', variable: 'key')        
       ]
     ) {  
         stage('Deploy') {  
-              sh "echo 'test'"    
+              sh "/Applications/Docker.app/Contents/Resources/bin/docker run -v tinkertailor_gatsby_build:/app/public tinkertailor_gatsby:latest sh -c 'gatsby build'"    
        }
      }
     }
