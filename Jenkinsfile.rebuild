@@ -13,7 +13,7 @@ node {
       ]
     ) {  
         stage('Deploy') {  
-              sh "/Applications/Docker.app/Contents/Resources/bin/docker run -v tinkertailor_gatsby_build:/app/public tinkertailor_gatsby:latest sh -c 'gatsby build'"         
+              sh "docker run -v tinkertailor_gatsby_build:/app/public tinkertailor_gatsby:latest sh -c 'gatsby build'"         
               
        }
      }
