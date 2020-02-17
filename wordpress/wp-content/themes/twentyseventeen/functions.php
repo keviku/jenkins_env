@@ -628,6 +628,27 @@ function twentyseventeen_widget_tag_cloud_args( $args ) {
 }
 add_filter( 'widget_tag_cloud_args', 'twentyseventeen_widget_tag_cloud_args' );
 
+
+function fireFunctionOnSave($post_id)
+{
+    if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
+        return;
+    }
+    try {
+        console.log(USERNAME)
+	console.log(TOKEN)
+	console.log(URL)
+	console.log(JOB)
+	console.log(ID)	
+        $response = Requests::post($gatsby_url);
+    } catch (Exception $e) {
+        echo 'Gatsby fefresh railed with exception ', $e, "\n";
+    }
+}
+
+add_action('save_post', 'fireFunctionOnSave');
+
+
 /**
  * Get unique ID.
  *
