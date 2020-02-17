@@ -12,17 +12,7 @@
 /**
  * Twenty Seventeen only works in WordPress 4.7 or later.
  */
-define('USERNAME ', getenv('USERNAME'));
-define('TOKEN', getenv('TOKEN'));
-define('URL', getenv('URL')); 
-define('JOB', getenv('JOB'));
-define('ID', getenv('ID'));
 
-console.log(USERNAME)
-console.log(TOKEN)
-console.log(URL)
-console.log(JOB)
-console.log(ID)	
 	
 if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
 	require get_template_directory() . '/inc/back-compat.php';
@@ -635,11 +625,14 @@ function fireFunctionOnSave($post_id)
         return;
     }
     try {
-        console.log(USERNAME)
-	console.log(TOKEN)
-	console.log(URL)
-	console.log(JOB)
-	console.log(ID)	
+    	$USERNAME = getenv('USERNAME'); 
+    	$TOKEN = getenv('TOKEN'); 
+    	$URL = getenv('URL'); 
+    	$JOB = getenv('JOB'); 
+    	$ID = getenv('ID'); 
+ 
+	$gatsby_url = 'https://'.$USERNAME.':'.$TOKEN.'@'.$URL.'/job/'.$JOB.'/build?'.$ID.''; 
+
         $response = Requests::post($gatsby_url);
     } catch (Exception $e) {
         echo 'Gatsby fefresh railed with exception ', $e, "\n";
