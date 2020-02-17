@@ -20,11 +20,11 @@ services:
       WORDPRESS_DB_NAME: test
       WORDPRESS_DB_USER: root
       WORDPRESS_DB_PASSWORD: test
-      USERNAME=${USERNAME}
-      TOKEN=${TOKEN}
-      URL=${URL}
-      JOB=${JOB}
-      ID=${ID}
+      USERNAME: "${USERNAME}"
+      TOKEN: "${TOKEN}"
+      URL: "${URL}"
+      JOB: "${JOB}"
+      ID: "${ID}"
       
     restart: unless-stopped
     ports:
