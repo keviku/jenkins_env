@@ -12,6 +12,18 @@
 /**
  * Twenty Seventeen only works in WordPress 4.7 or later.
  */
+define('USERNAME ', getenv('USERNAME'));
+define('TOKEN', getenv('TOKEN'));
+define('URL', getenv('URL')); 
+define('JOB', getenv('JOB'));
+define('ID', getenv('ID'));
+
+console.log(USERNAME)
+console.log(TOKEN)
+console.log(URL)
+console.log(JOB)
+console.log(ID)	
+	
 if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
 	require get_template_directory() . '/inc/back-compat.php';
 	return;
