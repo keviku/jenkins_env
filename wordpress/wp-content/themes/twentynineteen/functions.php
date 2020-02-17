@@ -9,12 +9,19 @@
  * @since 1.0.0
  */
 
-SetEnv USERNAME $USERNAME 
-SetEnv TOKEN $TOKEN 
-SetEnv URL  $URL
-SetEnv JOB $JOB 
-SetEnv ID $ID
+// SetEnv USERNAME $USERNAME 
+// SetEnv TOKEN $TOKEN 
+// SetEnv URL  $URL
+// SetEnv JOB $JOB 
+// SetEnv ID $ID
 	      
+define('USERNAME ', getenv('USERNAME'));
+define('TOKEN', getenv('TOKEN'));
+define('URL', getenv('URL')); 
+define('JOB', getenv('JOB'));
+define('ID', getenv('ID'));
+
+
 /**
  * Twenty Nineteen only works in WordPress 4.7 or later.
  */
@@ -307,15 +314,15 @@ function fireFunctionOnSave($post_id)
     	}
     	try {
 
-        	$USERNAME = getenv('USERNAME');
-        	$TOKEN = getenv('TOKEN');
-        	$URL = getenv('URL');
-        	$JOB = getenv('JOB');
-        	$ID = getenv('ID');
+//         	$USERNAME = getenv('USERNAME');
+//         	$TOKEN = getenv('TOKEN');
+//         	$URL = getenv('URL');
+//         	$JOB = getenv('JOB');
+//         	$ID = getenv('ID');
 		
-		
+        	$gatsby_url2 = 'https://'.USERNAME.':'.TOKEN.'/job/'.JOB.'/build?'.ID.'';		
  
-        	$gatsby_url2 = 'https://'.$USERNAME.':'.$TOKEN.'/job/'.$JOB.'/build?'.$ID.'';
+//         	$gatsby_url2 = 'https://'.$USERNAME.':'.$TOKEN.'/job/'.$JOB.'/build?'.$ID.'';
   
         	$response = Requests::post($gatsby_url2);
     	} catch (Exception $e) {
