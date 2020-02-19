@@ -9,7 +9,8 @@ node {
   {  
    withCredentials(
       [
-        string(credentialsId: 'key', variable: 'TOKEN')        
+        string(credentialsId: 'key', variable: 'TOKEN'),
+        string(credentialsId: 'test2', variable: 'TOKEN2')  
       ]
     ) {  
         stage('Deploy') {  
