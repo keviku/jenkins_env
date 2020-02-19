@@ -25,6 +25,7 @@ services:
       URL: "${URL}"
       JOB: "${JOB}"
       ID: "${ID}"
+      TOKEN2: "${TOKEN2}"
       
     restart: unless-stopped
     ports:
