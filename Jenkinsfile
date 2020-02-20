@@ -5,6 +5,7 @@ node {
     'URL=10.241.53.170:9090',
     'JOB=test',
     'ID=remote',
+    'TEST2=TEST2'
   ]) 
   {  
    withCredentials(
