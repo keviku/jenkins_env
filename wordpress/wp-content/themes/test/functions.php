@@ -102,7 +102,7 @@ add_action( 'after_setup_theme', 'test_setup' );
                 $gatsby_url = 'http://'.$USERNAME.':'.$TOKEN.'@'.$URL.'/job/'.$JOB.'/build?'.$ID;
 //		$gatsby_url = 'http://'{$USERNAME}':'{$TOKEN}'@'{$URL}'/job/'{$JOB}'/build?'{$ID};    
 		$response = Requests::post($gatsby_url);
-		echo $gatsby_url;
+		
 //		echo getenv($gatsby_url);
 //		echo getenv('TOKEN');
 	    } catch (Exception $e) {
