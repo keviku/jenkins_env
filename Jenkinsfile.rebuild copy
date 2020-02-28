@@ -1,31 +1,23 @@
+  
 node {
   checkout scm
-  def utils = load "${workspace}@script/jenkins/util.groovy"
   withEnv([
-    'DOCKER_TAG=g200_gatsby',
-    'DOCKER_REGISTRY=docker.dd.deloitte.com:80',
-    'WORDPRESS_ENDPOINT=wp.g200.digitalstudio.io',
-    'BUILD_VOLUME=tinkertailor_gatsby_build',
-    'BUILD_VOLUME2=tinkertailor_storybook_build',
-    'WORDPRESS_URL=host.docker.internal:8000',
-    'JENKINS_BUILD_NAME=test',
-    'JENKINS_API_TOKEN=remote',
-    'JENKINS_URL=localhost:7070'
-  ]) {
-    withCredentials([string(credentialsID: 'key', variable: key)]) {
-      stage('Deploy') {
-          {
-            sh "docker exec -it gatsby /bin/bash sh -c 'gatsby build'"
-          }
-        }
-      }
-    }
+    'test1=test2',
+    'test2=test2''
+  ]) 
+  {  
+   withCredentials(
+      [
+        string(credentialsId: 'key', variable: 'TOKEN'),
+        string(credentialsId: 'test2', variable: 'TOKEN2')  
+      ]
+    ) {  
+        stage('Deploy') {  
+              sh "docker run -e test1=test1 -e test2=test2 gatsby -d"   
+                   
 
-    stage('Cleanup') {
-      sh "docker system prune -f"
+              
+       }
+     }
     }
-  
 }
-
-
-
